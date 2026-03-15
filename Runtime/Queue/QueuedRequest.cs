@@ -1,8 +1,14 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using System;
 using Newtonsoft.Json;
 
 namespace Ovation.Queue
 {
+    /// <summary>
+    /// A serializable representation of a queued IssueAchievement request,
+    /// persisted to disk for offline retry.
+    /// </summary>
     [Serializable]
     internal class QueuedRequest
     {

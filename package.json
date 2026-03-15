@@ -5,6 +5,13 @@
     "description": "Universal achievement platform SDK for Unity. Issue achievements, manage player profiles, and display cosmetic assets.",
     "unity": "2022.3",
     "documentationUrl": "https://docs.ovation.games",
+    "changelogUrl": "https://github.com/samparks/ovation-unity/blob/main/CHANGELOG.md",
+    "licensesUrl": "https://github.com/samparks/ovation-unity/blob/main/LICENSE",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/samparks/ovation-unity.git"
+    },
     "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.2.1"
     },

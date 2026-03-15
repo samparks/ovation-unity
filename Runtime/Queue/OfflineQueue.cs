@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,6 +13,12 @@ using UnityEngine;
 
 namespace Ovation.Queue
 {
+    /// <summary>
+    /// Persists failed IssueAchievement requests to disk and retries them when connectivity returns.
+    /// Queue is saved to Application.persistentDataPath/OvationQueue/queue.json and survives app restarts.
+    /// Uses idempotency keys to prevent duplicate issuance. Retries up to 5 times with exponential backoff.
+    /// Capped at a configurable max size (default 100) — oldest items are dropped when full.
+    /// </summary>
     internal class OfflineQueue
     {
         private const int MaxRetries = 5;

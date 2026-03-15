@@ -1,8 +1,14 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using UnityEditor;
 using UnityEngine;
 
 namespace Ovation.Editor
 {
+    /// <summary>
+    /// Custom inspector for <see cref="OvationConfig"/>. Shows a masked API key field,
+    /// environment info, and runtime status when in Play Mode.
+    /// </summary>
     [CustomEditor(typeof(OvationConfig))]
     public class OvationConfigEditor : UnityEditor.Editor
     {

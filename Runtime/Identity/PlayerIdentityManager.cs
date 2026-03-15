@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using System.Threading.Tasks;
 using Ovation.Api;
 using Ovation.Utils;
@@ -5,6 +7,11 @@ using UnityEngine;
 
 namespace Ovation.Identity
 {
+    /// <summary>
+    /// Manages automatic player identity. On first use, creates an anonymous player via the API
+    /// and stores the UUID in PlayerPrefs. On subsequent sessions, reuses the stored ID.
+    /// Can be disabled via OvationConfig.AutoManagePlayerId for games that manage IDs themselves.
+    /// </summary>
     internal class PlayerIdentityManager
     {
         private const string PlayerIdKey = "Ovation_PlayerId";

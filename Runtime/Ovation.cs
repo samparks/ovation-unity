@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -87,7 +89,8 @@ namespace Ovation
         }
 
         /// <summary>
-        /// The current player's Ovation ID.
+        /// The current player's Ovation UUID. Auto-created on first init and persisted in PlayerPrefs.
+        /// Throws if the SDK is not initialized — check <see cref="IsReady"/> first if unsure.
         /// </summary>
         public static string PlayerId
         {
@@ -99,7 +102,7 @@ namespace Ovation
         }
 
         /// <summary>
-        /// Whether the SDK is initialized and ready.
+        /// True if the SDK is initialized and ready to accept calls. Safe to check without try/catch.
         /// </summary>
         public static bool IsReady => OvationSDK.Instance != null && OvationSDK.Instance.IsInitialized;
 

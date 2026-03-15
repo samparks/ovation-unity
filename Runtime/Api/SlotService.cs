@@ -1,9 +1,15 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ovation.Models;
 
 namespace Ovation.Api
 {
+    /// <summary>
+    /// Handles slot and equipment API operations: listing standard slots,
+    /// equipping/unequipping assets, and querying equipped state.
+    /// </summary>
     internal class SlotService
     {
         private readonly OvationApiClient _client;

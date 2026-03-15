@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using NUnit.Framework;
 using Ovation;
 using UnityEngine;

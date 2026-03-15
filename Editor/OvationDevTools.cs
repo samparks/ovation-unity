@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using System.Collections.Generic;
 using Ovation.Models;
 using UnityEditor;
@@ -5,6 +7,11 @@ using UnityEngine;
 
 namespace Ovation.Editor
 {
+    /// <summary>
+    /// Runtime developer tools for testing the Ovation SDK. Available in Play Mode via
+    /// Ovation > Dev Tools. Lets you issue achievements, browse achievement definitions,
+    /// view player state, link external IDs, and manage test data.
+    /// </summary>
     public class OvationDevTools : EditorWindow
     {
         private string _achievementSlug = "";

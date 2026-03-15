@@ -1,8 +1,15 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using UnityEditor;
 using UnityEngine;
 
 namespace Ovation.Editor
 {
+    /// <summary>
+    /// Step-by-step wizard for first-time Ovation SDK setup. Guides the developer through
+    /// entering their API key, selecting an environment, and creating a config asset.
+    /// Access via Ovation > Setup Wizard in the Unity menu bar.
+    /// </summary>
     public class OvationSetupWizard : EditorWindow
     {
         private string _apiKey = "";

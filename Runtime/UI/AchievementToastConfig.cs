@@ -1,7 +1,14 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using UnityEngine;
 
 namespace Ovation.UI
 {
+    /// <summary>
+    /// Configuration for the achievement toast notification popup. Customize colors, position,
+    /// timing, and audio. Create via Assets > Create > Ovation > Toast Config, or pass null
+    /// to <see cref="AchievementToast.Create"/> to use sensible defaults.
+    /// </summary>
     [CreateAssetMenu(fileName = "OvationToastConfig", menuName = "Ovation/Toast Config", order = 2)]
     public class AchievementToastConfig : ScriptableObject
     {
@@ -50,12 +57,20 @@ namespace Ovation.UI
         public float soundVolume = 0.5f;
     }
 
+    /// <summary>
+    /// Screen position for the achievement toast notification.
+    /// </summary>
     public enum ToastPosition
     {
+        /// <summary>Top-right corner of the screen (default, matches Steam/Xbox style).</summary>
         TopRight,
+        /// <summary>Top-left corner of the screen.</summary>
         TopLeft,
+        /// <summary>Bottom-right corner of the screen.</summary>
         BottomRight,
+        /// <summary>Bottom-left corner of the screen.</summary>
         BottomLeft,
+        /// <summary>Top-center of the screen.</summary>
         TopCenter
     }
 }

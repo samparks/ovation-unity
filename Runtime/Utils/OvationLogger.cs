@@ -1,7 +1,14 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using UnityEngine;
 
 namespace Ovation.Utils
 {
+    /// <summary>
+    /// Internal logging utility. All messages are prefixed with [Ovation].
+    /// Log and Warning are gated behind the debug logging setting.
+    /// Errors always log regardless of the setting.
+    /// </summary>
     internal static class OvationLogger
     {
         private static bool _enabled;
@@ -25,7 +32,6 @@ namespace Ovation.Utils
 
         internal static void Error(string message)
         {
-            // Errors always log regardless of debug setting
             Debug.LogError($"[Ovation] ERROR: {message}");
         }
     }

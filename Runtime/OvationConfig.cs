@@ -1,7 +1,13 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using UnityEngine;
 
 namespace Ovation
 {
+    /// <summary>
+    /// ScriptableObject holding all Ovation SDK configuration. Create via Assets > Create > Ovation > Config
+    /// and assign to the OvationSDK component, or use <see cref="Ovation.Init"/> for code-only setup.
+    /// </summary>
     [CreateAssetMenu(fileName = "OvationConfig", menuName = "Ovation/Config", order = 1)]
     public class OvationConfig : ScriptableObject
     {
@@ -35,6 +41,10 @@ namespace Ovation
         [Tooltip("Maximum cache size in megabytes for downloaded asset images.")]
         [SerializeField] private int maxCacheSizeMB = 50;
 
+        /// <summary>
+        /// Default API base URL. Currently points to the dev environment.
+        /// Will be updated to the production URL (https://api.ovation.games) at launch.
+        /// </summary>
         public const string DefaultBaseUrl = "https://dev.api.ovation.games";
 
         public string ApiKey => apiKey;
@@ -80,9 +90,15 @@ namespace Ovation
         }
     }
 
+    /// <summary>
+    /// Ovation API environment. Test keys (ovn_test_*) create isolated test data.
+    /// Live keys (ovn_live_*) create real data.
+    /// </summary>
     public enum OvationEnvironment
     {
+        /// <summary>Test environment — data is isolated and can be wiped via DeleteTestData().</summary>
         Test,
+        /// <summary>Live environment — creates real, persistent data.</summary>
         Live
     }
 }

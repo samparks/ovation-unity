@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
@@ -7,6 +9,10 @@ using UnityEngine.TestTools;
 
 namespace Ovation.Tests.Runtime
 {
+    /// <summary>
+    /// Tests that all Ovation API response models deserialize correctly from JSON.
+    /// These verify that the C# models match the API contract defined in the Ovation API docs.
+    /// </summary>
     public class OvationModelTests
     {
         [Test]

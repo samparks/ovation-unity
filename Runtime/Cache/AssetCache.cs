@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +14,11 @@ using UnityEngine;
 
 namespace Ovation.Cache
 {
+    /// <summary>
+    /// Downloads and caches asset images to disk. Cache keys are SHA256(url + version).
+    /// Uses LRU eviction when the cache exceeds the configured max size.
+    /// Files are stored in Application.persistentDataPath/OvationCache/ and survive app restarts.
+    /// </summary>
     internal class AssetCache
     {
         private readonly OvationApiClient _client;

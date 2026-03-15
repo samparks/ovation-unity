@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +13,11 @@ using UnityEngine.Networking;
 
 namespace Ovation.Api
 {
+    /// <summary>
+    /// Core HTTP client built on UnityWebRequest. Handles base URL construction,
+    /// Bearer token injection, JSON serialization (via Newtonsoft), error response
+    /// parsing, and auto-pagination. All requests run on the main thread via Unity's async context.
+    /// </summary>
     internal class OvationApiClient
     {
         private readonly string _baseUrl;

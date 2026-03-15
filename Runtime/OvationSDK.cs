@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,6 +13,22 @@ using UnityEngine;
 
 namespace Ovation
 {
+    /// <summary>
+    /// Core Ovation SDK singleton. Persists across scenes via DontDestroyOnLoad.
+    ///
+    /// There are two ways to set up the SDK:
+    ///
+    /// 1. Code-only (simplest): Call <see cref="Ovation.Init"/> which creates this automatically.
+    /// 2. Scene-based: Add this component to a GameObject and assign an <see cref="OvationConfig"/> asset.
+    ///
+    /// All public methods have two variants:
+    /// - Callback: <c>GetAchievements(onSuccess, onError)</c>
+    /// - Async/await: <c>await GetAchievementsAsync()</c>
+    ///
+    /// Async methods throw <see cref="OvationException"/> on API errors.
+    /// Callback methods invoke the onError callback instead.
+    /// Both variants fire the <see cref="OnError"/> event.
+    /// </summary>
     public class OvationSDK : MonoBehaviour
     {
         private static OvationSDK _instance;
@@ -31,9 +49,22 @@ namespace Ovation
         private bool _initialized;
         private float _lastQueueFlush;
 
-        // Events
+        /// <summary>
+        /// Fires when a new achievement is unlocked (WasNew == true). Does not fire for
+        /// already-earned achievements or offline-queued requests.
+        /// </summary>
         public event Action<IssueAchievementResult> OnAchievementEarned;
+
+        /// <summary>
+        /// Fires on any API error, in addition to per-call error callbacks.
+        /// Useful for global error logging or monitoring.
+        /// </summary>
         public event Action<OvationError> OnError;
+
+        /// <summary>
+        /// Fires when a previously offline-queued achievement is successfully synced to the server.
+        /// Parameters: (achievement slug, issue result).
+        /// </summary>
         public event Action<string, IssueAchievementResult> OnQueuedAchievementSynced;
 
         /// <summary>

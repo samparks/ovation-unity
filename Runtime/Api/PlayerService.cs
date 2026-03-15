@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Ovation Games. MIT License. See LICENSE for details.
+
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -6,6 +8,10 @@ using Ovation.Utils;
 
 namespace Ovation.Api
 {
+    /// <summary>
+    /// Handles player-related API operations: creating anonymous players,
+    /// setting external IDs, issuing achievements, and fetching player data.
+    /// </summary>
     internal class PlayerService
     {
         private readonly OvationApiClient _client;
