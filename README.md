@@ -21,7 +21,7 @@ using Ovation.UI;
 async void Start()
 {
     // Initialize with your API key (fetch from your backend — never embed in builds)
-    await Ovation.Init("your-api-key", enableDebugLogging: true);
+    await OvationSDK.Init("your-api-key", enableDebugLogging: true);
 
     // Optional: show toast popups when achievements unlock
     AchievementToast.Create();
@@ -32,12 +32,12 @@ async void Start()
 
 ```csharp
 // That's it. One line.
-Ovation.Unlock("first-blood");
+OvationSDK.Unlock("first-blood");
 ```
 
 ## What you get
 
-- **Achievements in one line of code** — `Ovation.Unlock("first-blood")`
+- **Achievements in one line of code** — `OvationSDK.Unlock("first-blood")`
 - **Production backend** — no database, no server, no infrastructure to manage
 - **Automatic player identity** — anonymous player IDs created and persisted automatically
 - **Offline support** — achievements queue locally when offline, sync when connectivity returns
@@ -55,11 +55,11 @@ Ovation.Unlock("first-blood");
 
 ### Option A: Code only (simplest)
 
-No scene setup needed. Call `Ovation.Init()` from any MonoBehaviour:
+No scene setup needed. Call `OvationSDK.Init()` from any MonoBehaviour:
 
 ```csharp
-await Ovation.Init("your-api-key");
-Ovation.Unlock("first-blood");
+await OvationSDK.Init("your-api-key");
+OvationSDK.Unlock("first-blood");
 ```
 
 ### Option B: Scene-based (inspector-configurable)
@@ -79,20 +79,20 @@ OvationSDK.Instance.IssueAchievement("first-blood",
 
 ## API Reference
 
-### Static API (`Ovation`)
+### Static API (`OvationSDK`)
 
-The simplest way to use the SDK. All methods are static.
+The simplest way to use the SDK. These static methods work without any scene setup.
 
 | Method | Description |
 |--------|-------------|
-| `Ovation.Init(apiKey, baseUrl?, enableDebugLogging?)` | Initialize the SDK. Call once at game start. |
-| `Ovation.Unlock(slug)` | Issue an achievement to the current player. |
-| `Ovation.UnlockAsync(slug)` | Issue an achievement and await the result. |
-| `Ovation.GetAchievementsAsync()` | List all achievements defined by your authority. |
-| `Ovation.GetPlayerAchievementsAsync()` | List achievements earned by the current player. |
-| `Ovation.SetExternalIdAsync(externalId)` | Link a platform ID (Steam, Xbox, etc.) to the player. |
-| `Ovation.PlayerId` | The current player's Ovation UUID. |
-| `Ovation.IsReady` | Whether the SDK is initialized. |
+| `OvationSDK.Init(apiKey, baseUrl?, enableDebugLogging?)` | Initialize the SDK. Call once at game start. |
+| `OvationSDK.Unlock(slug)` | Issue an achievement to the current player. |
+| `OvationSDK.UnlockAsync(slug)` | Issue an achievement and await the result. |
+| `OvationSDK.Instance.GetAchievementsAsync()` | List all achievements defined by your authority. |
+| `OvationSDK.Instance.GetPlayerAchievementsAsync()` | List achievements earned by the current player. |
+| `OvationSDK.Instance.SetExternalIdAsync(externalId)` | Link a platform ID (Steam, Xbox, etc.) to the player. |
+| `OvationSDK.Instance.PlayerId` | The current player's Ovation UUID. |
+| `OvationSDK.IsReady` | Whether the SDK is initialized. |
 
 ### Instance API (`OvationSDK.Instance`)
 
@@ -172,7 +172,7 @@ Your API key should **never** be embedded in the game binary. Fetch it from your
 async void Start()
 {
     string apiKey = await YourBackend.FetchOvationKey();
-    await Ovation.Init(apiKey);
+    await OvationSDK.Init(apiKey);
 }
 ```
 
@@ -182,7 +182,7 @@ The `OvationConfig` inspector field is for **editor testing only**.
 
 ```
 Runtime/
-  Ovation.cs              — Static convenience API
+  Ovation.cs              — (reserved)
   OvationSDK.cs           — Core singleton (MonoBehaviour)
   OvationConfig.cs        — ScriptableObject configuration
   Api/                    — HTTP client and service layer

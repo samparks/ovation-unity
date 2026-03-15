@@ -9,7 +9,7 @@ using UnityEngine;
 /// Basic integration sample showing how to use the Ovation SDK.
 ///
 /// OPTION A (simplest — no scene setup):
-///   Just attach this script. It calls Ovation.Init() and Ovation.Unlock().
+///   Just attach this script. It calls OvationSDK.Init() and OvationSDK.Unlock().
 ///
 /// OPTION B (scene-based):
 ///   Add OvationSDK component to a GameObject, assign an OvationConfig asset.
@@ -28,10 +28,10 @@ public class BasicIntegrationSample : MonoBehaviour
     {
         // --- THE SIMPLEST POSSIBLE INTEGRATION ---
         // Two lines. That's it.
-        await Ovation.Init(apiKey, enableDebugLogging: true);
+        await OvationSDK.Init(apiKey, enableDebugLogging: true);
         AchievementToast.Create(); // Optional: shows popups when achievements unlock
 
-        Debug.Log($"Ovation ready! Player ID: {Ovation.PlayerId}");
+        Debug.Log($"Ovation ready! Player ID: {OvationSDK.Instance.PlayerId}");
     }
 
     /// <summary>
@@ -41,7 +41,7 @@ public class BasicIntegrationSample : MonoBehaviour
     public void UnlockAchievement()
     {
         // This is the pitch: achievements in one line of code.
-        Ovation.Unlock(testAchievementSlug);
+        OvationSDK.Unlock(testAchievementSlug);
     }
 
     /// <summary>
@@ -51,7 +51,7 @@ public class BasicIntegrationSample : MonoBehaviour
     {
         try
         {
-            var result = await Ovation.UnlockAsync(testAchievementSlug);
+            var result = await OvationSDK.UnlockAsync(testAchievementSlug);
 
             if (result.WasQueued)
                 Debug.Log($"Offline — '{result.Slug}' queued for sync");
@@ -71,7 +71,7 @@ public class BasicIntegrationSample : MonoBehaviour
     /// </summary>
     public async void ListAchievements()
     {
-        var achievements = await Ovation.GetAchievementsAsync();
+        var achievements = await OvationSDK.Instance.GetAchievementsAsync();
         Debug.Log($"Found {achievements.Count} achievements:");
         foreach (var a in achievements)
             Debug.Log($"  {a.Slug}: {a.DisplayName} ({a.RarityPercentage}% earned)");
@@ -82,7 +82,7 @@ public class BasicIntegrationSample : MonoBehaviour
     /// </summary>
     public async void ShowPlayerAchievements()
     {
-        var earned = await Ovation.GetPlayerAchievementsAsync();
+        var earned = await OvationSDK.Instance.GetPlayerAchievementsAsync();
         Debug.Log($"Player has earned {earned.Count} achievements:");
         foreach (var a in earned)
         {
@@ -97,7 +97,7 @@ public class BasicIntegrationSample : MonoBehaviour
     /// </summary>
     public async void LinkSteamId()
     {
-        var result = await Ovation.SetExternalIdAsync("steam_76561198012345");
+        var result = await OvationSDK.Instance.SetExternalIdAsync("steam_76561198012345");
         Debug.Log($"Linked: {result.ExternalId}");
     }
 

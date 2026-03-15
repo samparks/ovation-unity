@@ -82,9 +82,67 @@ namespace Ovation
         /// </summary>
         public int OfflineQueueCount => _offlineQueue?.Count ?? 0;
 
+        // ----- Static Convenience API -----
+        // These let you use OvationSDK without any scene setup:
+        //   await OvationSDK.Init("api-key");
+        //   OvationSDK.Unlock("first-blood");
+
+        /// <summary>
+        /// Initialize the Ovation SDK with just an API key. No scene setup required.
+        /// Creates the singleton GameObject automatically with DontDestroyOnLoad.
+        /// </summary>
+        /// <param name="apiKey">Your Ovation API key (fetch from your backend at runtime).</param>
+        /// <param name="baseUrl">Optional base URL override. Defaults to the dev API.</param>
+        /// <param name="enableDebugLogging">Enable [Ovation] debug logs in the console.</param>
+        public static async Task Init(string apiKey, string baseUrl = null, bool enableDebugLogging = false)
+        {
+            if (_instance != null && _instance._initialized)
+            {
+                OvationLogger.SetEnabled(enableDebugLogging);
+                OvationLogger.Log("SDK already initialized, updating API key");
+                _instance.SetApiKey(apiKey);
+                return;
+            }
+
+            var sdk = CreateProgrammatic(apiKey, baseUrl, enableDebugLogging);
+            await sdk.InitializeAsync();
+        }
+
+        /// <summary>
+        /// Issue an achievement to the current player. One line of code.
+        /// Queues automatically if offline. Fires OnAchievementEarned if new.
+        /// </summary>
+        public static void Unlock(string slug)
+        {
+            EnsureStaticReady();
+            _instance.IssueAchievement(slug);
+        }
+
+        /// <summary>
+        /// Issue an achievement (async). Returns the result with WasNew and WasQueued flags.
+        /// </summary>
+        public static Task<IssueAchievementResult> UnlockAsync(string slug)
+        {
+            EnsureStaticReady();
+            return _instance.IssueAchievementAsync(slug);
+        }
+
+        /// <summary>
+        /// True if the SDK is initialized and ready to accept calls. Safe to check without try/catch.
+        /// </summary>
+        public static bool IsReady => _instance != null && _instance._initialized;
+
+        private static void EnsureStaticReady()
+        {
+            if (_instance == null || !_instance._initialized)
+                throw new InvalidOperationException(
+                    "[Ovation] SDK not initialized. Call OvationSDK.Init(\"your-api-key\") first, " +
+                    "or add OvationSDK to your scene with a config asset.");
+        }
+
         /// <summary>
         /// Create the OvationSDK singleton programmatically — no scene setup needed.
-        /// Use Ovation.Init() instead of calling this directly.
+        /// Use OvationSDK.Init() instead of calling this directly.
         /// </summary>
         internal static OvationSDK CreateProgrammatic(string apiKey, string baseUrl = null, bool enableDebugLogging = false)
         {
