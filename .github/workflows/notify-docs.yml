@@ -1,0 +1,18 @@
+name: Notify ovation-api of docs update
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Documentation~/OVATION_SDK_DOCUMENTATION.md"
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger sync in ovation-api
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DOCS_SYNC_TOKEN }}
+          repository: ovation-games/ovation-api
+          event-type: sdk-docs-updated
