@@ -2,7 +2,8 @@
     "name": "Ovation.Runtime",
     "rootNamespace": "Ovation",
     "references": [
-        "Unity.Nuget.Newtonsoft-Json"
+        "Unity.Nuget.Newtonsoft-Json",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

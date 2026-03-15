@@ -13,7 +13,8 @@
         "url": "https://github.com/samparks/ovation-unity.git"
     },
     "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "3.2.1"
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "com.unity.textmeshpro": "3.0.6"
     },
     "keywords": ["achievements", "gamification", "ovation", "sdk"],
     "author": {

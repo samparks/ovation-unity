@@ -29,13 +29,10 @@ namespace Ovation.UI
         [Tooltip("Screen position for the toast.")]
         public ToastPosition position = ToastPosition.TopRight;
 
-        [Tooltip("Width of the toast panel in pixels.")]
+        [Tooltip("Width of the toast panel in canvas units at 1920×1080 reference resolution. Scales proportionally on all screen sizes.")]
         public float width = 360f;
 
-        [Tooltip("Height of the toast panel in pixels.")]
-        public float height = 80f;
-
-        [Tooltip("Margin from the screen edge in pixels.")]
+        [Tooltip("Margin from the screen edge in canvas units at 1920×1080 reference resolution.")]
         public float margin = 20f;
 
         [Header("Timing")]
