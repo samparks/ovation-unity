@@ -104,7 +104,9 @@ InitTestScene*.unity*
 # LLM Context
 reference_information*
 OVATION_UNITY_SDK_SPEC.md
+OVATION_UNITY_SDK_SPEC.md.meta
 ovation-master-context-overview.md
+ovation-master-context-overview.md.meta
 
 # Toast preview tool output
 preview_*.png
