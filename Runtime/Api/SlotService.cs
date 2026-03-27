@@ -12,9 +12,9 @@ namespace Ovation.Api
     /// </summary>
     internal class SlotService
     {
-        private readonly OvationApiClient _client;
+        private readonly IOvationHttpClient _client;
 
-        internal SlotService(OvationApiClient client)
+        internal SlotService(IOvationHttpClient client)
         {
             _client = client;
         }

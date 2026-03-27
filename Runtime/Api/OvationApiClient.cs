@@ -18,7 +18,7 @@ namespace Ovation.Api
     /// Bearer token injection, JSON serialization (via Newtonsoft), error response
     /// parsing, and auto-pagination. All requests run on the main thread via Unity's async context.
     /// </summary>
-    internal class OvationApiClient
+    internal class OvationApiClient : IOvationHttpClient
     {
         private readonly string _baseUrl;
         private string _apiKey;
@@ -98,32 +98,6 @@ namespace Ovation.Api
                 await Task.Yield();
 
             return ParseResponse<string>(request);
-        }
-
-        internal async Task<ApiResult<List<T>>> GetAllPagesAsync<T>(string path, int pageSize = 50)
-        {
-            var allItems = new List<T>();
-            string cursor = null;
-
-            while (true)
-            {
-                var queryParams = new Dictionary<string, string> { { "limit", pageSize.ToString() } };
-                if (cursor != null)
-                    queryParams["cursor"] = cursor;
-
-                var result = await GetAsync<PaginatedResponse<T>>(path, queryParams);
-                if (!result.Success)
-                    return ApiResult<List<T>>.Failure(result.Error);
-
-                allItems.AddRange(result.Data.Data);
-
-                if (string.IsNullOrEmpty(result.Data.NextCursor))
-                    break;
-
-                cursor = result.Data.NextCursor;
-            }
-
-            return ApiResult<List<T>>.Ok(allItems);
         }
 
         internal async Task<byte[]> DownloadBytesAsync(string url)

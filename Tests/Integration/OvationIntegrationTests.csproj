@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Ovation.Tests.Integration</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.*" />
+    <PackageReference Include="NUnit" Version="3.*" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.*" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.*" />
+  </ItemGroup>
+
+  <!-- Link SDK source files (models, interface, services) -->
+  <ItemGroup>
+    <Compile Include="../../Runtime/Api/IOvationHttpClient.cs" Link="Sdk/Api/IOvationHttpClient.cs" />
+    <!-- Link services -->
+    <Compile Include="../../Runtime/Api/AchievementService.cs" Link="Sdk/Api/AchievementService.cs" />
+    <Compile Include="../../Runtime/Api/AssetService.cs" Link="Sdk/Api/AssetService.cs" />
+    <Compile Include="../../Runtime/Api/PlayerService.cs" Link="Sdk/Api/PlayerService.cs" />
+    <Compile Include="../../Runtime/Api/SlotService.cs" Link="Sdk/Api/SlotService.cs" />
+    <!-- Link all models -->
+    <Compile Include="../../Runtime/Models/Achievement.cs" Link="Sdk/Models/Achievement.cs" />
+    <Compile Include="../../Runtime/Models/Asset.cs" Link="Sdk/Models/Asset.cs" />
+    <Compile Include="../../Runtime/Models/AssetSummary.cs" Link="Sdk/Models/AssetSummary.cs" />
+    <Compile Include="../../Runtime/Models/Authority.cs" Link="Sdk/Models/Authority.cs" />
+    <Compile Include="../../Runtime/Models/EquippedAsset.cs" Link="Sdk/Models/EquippedAsset.cs" />
+    <Compile Include="../../Runtime/Models/ExternalIdResponse.cs" Link="Sdk/Models/ExternalIdResponse.cs" />
+    <Compile Include="../../Runtime/Models/IssueAchievementResult.cs" Link="Sdk/Models/IssueAchievementResult.cs" />
+    <Compile Include="../../Runtime/Models/OvationError.cs" Link="Sdk/Models/OvationError.cs" />
+    <Compile Include="../../Runtime/Models/PaginatedResponse.cs" Link="Sdk/Models/PaginatedResponse.cs" />
+    <Compile Include="../../Runtime/Models/Player.cs" Link="Sdk/Models/Player.cs" />
+    <Compile Include="../../Runtime/Models/PlayerAchievement.cs" Link="Sdk/Models/PlayerAchievement.cs" />
+    <Compile Include="../../Runtime/Models/Slot.cs" Link="Sdk/Models/Slot.cs" />
+    <!-- Link utils -->
+    <Compile Include="../../Runtime/Utils/IdempotencyKeyGenerator.cs" Link="Sdk/Utils/IdempotencyKeyGenerator.cs" />
+  </ItemGroup>
+
+  <!-- Copy test config to output -->
+  <ItemGroup>
+    <None Include="test-config.json" CopyToOutputDirectory="PreserveNewest" Condition="Exists('test-config.json')" />
+  </ItemGroup>
+</Project>

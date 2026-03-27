@@ -11,9 +11,9 @@ namespace Ovation.Api
     /// </summary>
     internal class AssetService
     {
-        private readonly OvationApiClient _client;
+        private readonly IOvationHttpClient _client;
 
-        internal AssetService(OvationApiClient client)
+        internal AssetService(IOvationHttpClient client)
         {
             _client = client;
         }

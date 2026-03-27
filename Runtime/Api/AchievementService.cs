@@ -12,9 +12,9 @@ namespace Ovation.Api
     /// </summary>
     internal class AchievementService
     {
-        private readonly OvationApiClient _client;
+        private readonly IOvationHttpClient _client;
 
-        internal AchievementService(OvationApiClient client)
+        internal AchievementService(IOvationHttpClient client)
         {
             _client = client;
         }

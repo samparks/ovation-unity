@@ -9,7 +9,7 @@ The fastest way to add achievements to your Unity game. One line of code. Produc
 In the Unity Editor: **Window > Package Manager > + > Add package from git URL**
 
 ```
-https://github.com/samparks/ovation-unity.git
+https://github.com/Ovation-Games/ovation-unity.git
 ```
 
 ### Initialize
@@ -199,6 +199,7 @@ Editor/
 Tests/
   Editor/                 — Config validation tests
   Runtime/                — Model deserialization tests
+  Integration/            — API integration tests (standalone .NET, no Unity required)
 ```
 
 ## License
@@ -208,5 +209,5 @@ MIT License. See [LICENSE](LICENSE) for details.
 ## Links
 
 - [Ovation Website](https://ovation.games)
-- [Authority Portal](https://dev.app.ovation.games) — register and manage your achievements
-- [API Documentation](https://dev.api.ovation.games/docs)
+- [Authority Portal](https://app.ovation.games) — register and manage your achievements
+- [API Documentation](https://docs.ovation.games)

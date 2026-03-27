@@ -21,13 +21,13 @@ namespace Ovation.Cache
     /// </summary>
     internal class AssetCache
     {
-        private readonly OvationApiClient _client;
+        private readonly IOvationHttpClient _client;
         private readonly string _cacheDir;
         private readonly string _indexPath;
         private readonly long _maxCacheBytes;
         private CacheIndex _index;
 
-        internal AssetCache(OvationApiClient client, int maxCacheSizeMB)
+        internal AssetCache(IOvationHttpClient client, int maxCacheSizeMB)
         {
             _client = client;
             _cacheDir = Path.Combine(Application.persistentDataPath, "OvationCache");

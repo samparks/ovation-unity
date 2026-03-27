@@ -37,7 +37,7 @@ namespace Ovation
         [SerializeField] private OvationConfig config;
 
         // Internal services
-        private OvationApiClient _apiClient;
+        private IOvationHttpClient _apiClient;
         private PlayerService _playerService;
         private AchievementService _achievementService;
         private SlotService _slotService;

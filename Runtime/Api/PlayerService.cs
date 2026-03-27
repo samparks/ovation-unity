@@ -14,9 +14,9 @@ namespace Ovation.Api
     /// </summary>
     internal class PlayerService
     {
-        private readonly OvationApiClient _client;
+        private readonly IOvationHttpClient _client;
 
-        internal PlayerService(OvationApiClient client)
+        internal PlayerService(IOvationHttpClient client)
         {
             _client = client;
         }
