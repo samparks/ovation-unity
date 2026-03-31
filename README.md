@@ -199,7 +199,7 @@ Editor/
 Tests/
   Editor/                 — Config validation tests
   Runtime/                — Model deserialization tests
-  Integration/            — API integration tests (standalone .NET, no Unity required)
+  Integration~/           — API integration tests (standalone .NET, no Unity required)
 ```
 
 ## Integration Tests
@@ -207,13 +207,13 @@ Tests/
 The SDK includes integration tests that run against the live API **without Unity**. They use a standalone .NET test project that compiles the SDK's service layer with a non-Unity HTTP client.
 
 ```bash
-cd Tests/Integration
+cd "Tests/Integration~"
 cp test-config.example.json test-config.json
 # Edit test-config.json with your ovn_test_* API key
 dotnet test
 ```
 
-Requires [.NET 8+](https://dotnet.microsoft.com/download). See [`Tests/Integration/README.md`](Tests/Integration/README.md) for details.
+Requires [.NET 8+](https://dotnet.microsoft.com/download). See [`Tests/Integration~/README.md`](Tests/Integration~/README.md) for details.
 
 ## License
 

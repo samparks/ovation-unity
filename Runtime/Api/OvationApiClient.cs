@@ -28,12 +28,12 @@ namespace Ovation.Api
             _baseUrl = baseUrl.TrimEnd('/');
         }
 
-        internal void SetApiKey(string apiKey)
+        public void SetApiKey(string apiKey)
         {
             _apiKey = apiKey;
         }
 
-        internal async Task<ApiResult<T>> GetAsync<T>(string path, Dictionary<string, string> queryParams = null, bool requiresAuth = true)
+        public async Task<ApiResult<T>> GetAsync<T>(string path, Dictionary<string, string> queryParams = null, bool requiresAuth = true)
         {
             var url = BuildUrl(path, queryParams);
             using var request = UnityWebRequest.Get(url);
@@ -46,7 +46,7 @@ namespace Ovation.Api
             return ParseResponse<T>(request);
         }
 
-        internal async Task<ApiResult<T>> PostAsync<T>(string path, object body = null, Dictionary<string, string> headers = null)
+        public async Task<ApiResult<T>> PostAsync<T>(string path, object body = null, Dictionary<string, string> headers = null)
         {
             var url = BuildUrl(path);
             var json = body != null ? JsonConvert.SerializeObject(body) : "{}";
@@ -69,7 +69,7 @@ namespace Ovation.Api
             return ParseResponse<T>(request);
         }
 
-        internal async Task<ApiResult<T>> PutAsync<T>(string path, object body)
+        public async Task<ApiResult<T>> PutAsync<T>(string path, object body)
         {
             var url = BuildUrl(path);
             var json = JsonConvert.SerializeObject(body);
@@ -86,7 +86,7 @@ namespace Ovation.Api
             return ParseResponse<T>(request);
         }
 
-        internal async Task<ApiResult<string>> DeleteAsync(string path)
+        public async Task<ApiResult<string>> DeleteAsync(string path)
         {
             var url = BuildUrl(path);
             using var request = UnityWebRequest.Delete(url);
@@ -100,7 +100,7 @@ namespace Ovation.Api
             return ParseResponse<string>(request);
         }
 
-        internal async Task<byte[]> DownloadBytesAsync(string url)
+        public async Task<byte[]> DownloadBytesAsync(string url)
         {
             using var request = UnityWebRequest.Get(url);
             var operation = request.SendWebRequest();

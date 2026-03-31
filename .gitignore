@@ -111,13 +111,13 @@ ovation-master-context-overview.md.meta
 # Toast preview tool output
 preview_*.png
 # Integration test build artifacts
-Tests/Integration/bin/
-Tests/Integration/obj/
+Tests/Integration~/bin/
+Tests/Integration~/obj/
 
 # Integration test config (contains API key)
-Tests/Integration/test-config.json
+Tests/Integration~/test-config.json
 
 # Allow the integration test .csproj (overrides *.csproj rule above)
-!Tests/Integration/OvationIntegrationTests.csproj
+!Tests/Integration~/OvationIntegrationTests.csproj
 
 /internal~
