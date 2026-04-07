@@ -4,7 +4,7 @@
     "displayName": "Ovation SDK",
     "description": "Universal achievement platform SDK for Unity. Issue achievements, manage player profiles, and display cosmetic assets.",
     "unity": "2022.3",
-    "documentationUrl": "https://docs.ovation.games",
+    "documentationUrl": "https://ovation.mintlify.app",
     "changelogUrl": "https://github.com/Ovation-Games/ovation-unity/blob/main/CHANGELOG.md",
     "licensesUrl": "https://github.com/Ovation-Games/ovation-unity/blob/main/LICENSE",
     "license": "MIT",

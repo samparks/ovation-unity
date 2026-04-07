@@ -179,8 +179,7 @@ OvationSDK.Instance.SetApiKey(newApiKey);
 The `OvationConfig` inspector field is for **editor testing only**.
 
 ### API Base URL
-- **Default (current):** `https://dev.api.ovation.games`
-- **Production (future):** `https://api.ovation.games`
+- **Default:** `https://api.ovation.games`
 - All endpoints prefixed with `/v1`
 - Overridable via `OvationConfig.baseUrlOverride` or the `baseUrl` parameter of `Init()`
 
@@ -583,7 +582,7 @@ Created via **Assets > Create > Ovation > Config**.
 |-------|------|---------|-------------|
 | `apiKey` | `string` | *(empty)* | API key for editor testing. Fetch from backend at runtime. |
 | `environment` | `OvationEnvironment` | `Test` | Test or Live environment toggle |
-| `baseUrlOverride` | `string` | *(empty)* | Override base URL (default: `https://dev.api.ovation.games`) |
+| `baseUrlOverride` | `string` | *(empty)* | Override base URL (default: `https://api.ovation.games`) |
 | `enableDebugLogging` | `bool` | `true` | Enable `[Ovation]` prefixed logs |
 | `autoManagePlayerId` | `bool` | `true` | Auto-create and persist anonymous player ID |
 | `maxQueueSize` | `int` | `100` | Max offline queue items |

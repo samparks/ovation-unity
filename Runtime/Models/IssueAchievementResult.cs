@@ -29,6 +29,10 @@ namespace Ovation.Models
         [JsonProperty("was_new")]
         public bool WasNew { get; set; }
 
+        /// <summary>Rarity tier based on percentage of players who have earned this achievement (e.g., "Common", "Uncommon", "Rare", "Epic", "Legendary"). Null if queued offline.</summary>
+        [JsonProperty("rarity")]
+        public string Rarity { get; set; }
+
         /// <summary>
         /// True if the request failed due to a network error and was queued for offline sync.
         /// When true, other fields (DisplayName, EarnedAt, WasNew) may be unset.

@@ -92,7 +92,7 @@ namespace Ovation
         /// Creates the singleton GameObject automatically with DontDestroyOnLoad.
         /// </summary>
         /// <param name="apiKey">Your Ovation API key (fetch from your backend at runtime).</param>
-        /// <param name="baseUrl">Optional base URL override. Defaults to the dev API.</param>
+        /// <param name="baseUrl">Optional base URL override. Defaults to https://api.ovation.games.</param>
         /// <param name="enableDebugLogging">Enable [Ovation] debug logs in the console.</param>
         public static async Task Init(string apiKey, string baseUrl = null, bool enableDebugLogging = false)
         {

@@ -22,6 +22,7 @@ namespace Ovation.Api
     {
         private readonly string _baseUrl;
         private string _apiKey;
+        private const int DefaultTimeoutSeconds = 30;
 
         internal OvationApiClient(string baseUrl)
         {
@@ -37,6 +38,7 @@ namespace Ovation.Api
         {
             var url = BuildUrl(path, queryParams);
             using var request = UnityWebRequest.Get(url);
+            request.timeout = DefaultTimeoutSeconds;
             ApplyHeaders(request, requiresAuth);
 
             var operation = request.SendWebRequest();
@@ -51,6 +53,7 @@ namespace Ovation.Api
             var url = BuildUrl(path);
             var json = body != null ? JsonConvert.SerializeObject(body) : "{}";
             using var request = new UnityWebRequest(url, "POST");
+            request.timeout = DefaultTimeoutSeconds;
             request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
             request.downloadHandler = new DownloadHandlerBuffer();
             ApplyHeaders(request, true);
@@ -74,6 +77,7 @@ namespace Ovation.Api
             var url = BuildUrl(path);
             var json = JsonConvert.SerializeObject(body);
             using var request = new UnityWebRequest(url, "PUT");
+            request.timeout = DefaultTimeoutSeconds;
             request.uploadHandler = new UploadHandlerRaw(Encoding.UTF8.GetBytes(json));
             request.downloadHandler = new DownloadHandlerBuffer();
             ApplyHeaders(request, true);
@@ -90,6 +94,7 @@ namespace Ovation.Api
         {
             var url = BuildUrl(path);
             using var request = UnityWebRequest.Delete(url);
+            request.timeout = DefaultTimeoutSeconds;
             request.downloadHandler = new DownloadHandlerBuffer();
             ApplyHeaders(request, true);
 
@@ -103,6 +108,7 @@ namespace Ovation.Api
         public async Task<byte[]> DownloadBytesAsync(string url)
         {
             using var request = UnityWebRequest.Get(url);
+            request.timeout = DefaultTimeoutSeconds;
             var operation = request.SendWebRequest();
             while (!operation.isDone)
                 await Task.Yield();

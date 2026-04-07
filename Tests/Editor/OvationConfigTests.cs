@@ -9,10 +9,10 @@ namespace Ovation.Tests.Editor
     public class OvationConfigTests
     {
         [Test]
-        public void DefaultBaseUrl_ReturnsDevUrl()
+        public void DefaultBaseUrl_ReturnsProductionUrl()
         {
             var config = ScriptableObject.CreateInstance<OvationConfig>();
-            Assert.AreEqual("https://dev.api.ovation.games", config.BaseUrl);
+            Assert.AreEqual("https://api.ovation.games", config.BaseUrl);
             Object.DestroyImmediate(config);
         }
 

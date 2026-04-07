@@ -223,4 +223,4 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 - [Ovation Website](https://ovation.games)
 - [Authority Portal](https://app.ovation.games) — register and manage your achievements
-- [API Documentation](https://docs.ovation.games)
+- [API Documentation](https://ovation.mintlify.app)

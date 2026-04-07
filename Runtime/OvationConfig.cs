@@ -42,10 +42,9 @@ namespace Ovation
         [SerializeField] private int maxCacheSizeMB = 50;
 
         /// <summary>
-        /// Default API base URL. Currently points to the dev environment.
-        /// Will be updated to the production URL (https://api.ovation.games) at launch.
+        /// Default API base URL.
         /// </summary>
-        public const string DefaultBaseUrl = "https://dev.api.ovation.games";
+        public const string DefaultBaseUrl = "https://api.ovation.games";
 
         public string ApiKey => apiKey;
         public OvationEnvironment Environment => environment;
