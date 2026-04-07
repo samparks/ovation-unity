@@ -24,7 +24,7 @@ namespace Ovation.Editor
         private bool _loadingAchievements;
         private bool _loadingPlayerAchievements;
 
-        [MenuItem("Ovation/Dev Tools")]
+        [MenuItem("Tools/Ovation/Dev Tools")]
         public static void ShowWindow()
         {
             var window = GetWindow<OvationDevTools>("Ovation Dev Tools");

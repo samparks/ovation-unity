@@ -17,7 +17,7 @@ namespace Ovation.Editor
         private string _baseUrlOverride = "";
         private int _step;
 
-        [MenuItem("Ovation/Setup Wizard")]
+        [MenuItem("Tools/Ovation/Setup Wizard")]
         public static void ShowWindow()
         {
             var window = GetWindow<OvationSetupWizard>("Ovation Setup");
@@ -25,7 +25,7 @@ namespace Ovation.Editor
             window.Show();
         }
 
-        [MenuItem("Ovation/Create Config Asset")]
+        [MenuItem("Tools/Ovation/Create Config Asset")]
         public static void CreateConfigAsset()
         {
             var config = ScriptableObject.CreateInstance<OvationConfig>();
